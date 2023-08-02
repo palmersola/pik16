@@ -5,21 +5,17 @@ class League extends Model{}
 
 League.init (
     {
-        leagueId: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
         leagueName: {
             type: DataTypes.STRING
+        },
+        gameArray: {
+            type: DataTypes.ARRAY(DataTypes.INTEGER)
         }
     }, {
         sequelize,
         timestamps: false,
-        freezeTableName: true,
         underscored: true,
         modelName: "league"
 });
-
 
 module.exports = League

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, League } = require("../../models");
+const { User, League, Player } = require("../../models/index");
 
 router.post("/", (req, res) => {
     if (!req.body.userName) {
@@ -7,35 +7,43 @@ router.post("/", (req, res) => {
         return;
     }
 
-    const user = {
+    const userData = {
         userName: req.body.userName,
         password: req.body.password,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
     };
 
-    User.create(user).then(data => {res.send(data)})
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while creating new user."
-            });
+    User.create(userData)
+        .then((user) => {
+            Player.create({ userId: user.userId }) // Assuming Player model has 'userId' field
+                .then(player => res.send({user, player} ))
+                .catch(err => {
+                    console.error('Error creating player:', err);
+                    res.status(500).send({ message: 'Error creating player for the user.' });
+                });
+        })
+        .catch((err) => {
+            console.error('Error creating user:', err);
+            res.status(500).send({ message: 'Error creating new user.' });
         });
     }
 );
 
 router.get("/", (req, res) => {
-    const userName = req.query.userName;
-    const condition = userName ? {userName: {[Op.like]: `%${userName}%`}} : null;
-
-    User.findAll({ where: condition })
-        .then(data => {res.send(data)})
+    User.findAll({
+        include: [Player], // Eager loading Player model
+    })
+        .then(users => {
+            res.send(users);
+        })
         .catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving user."
             });
         });
-    }
-)
+});
+
 router.get("/:userId", (req, res) => {
     const userId = req.params.userId;
 
