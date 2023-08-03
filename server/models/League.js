@@ -12,6 +12,9 @@ League.init (
         },
         leagueName: {
             type: DataTypes.STRING
+        },
+        gamesArr: {
+            type: DataTypes.ARRAY(DataTypes.INTEGER)
         }
     }, {
         sequelize,
