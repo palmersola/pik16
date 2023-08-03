@@ -98,7 +98,7 @@ router.get('/games', async (req, res) => {
     }
 });
 
-router.get('/poop', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const a = await getGames(year);
         await getTeams(year);
