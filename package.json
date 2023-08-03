@@ -10,7 +10,7 @@
     "dev": "concurrently \"npm run dev:server\"  \"npm run dev:client\"",
     "install:client": "cd ./client && npm i",
     "install:server": "cd ./server && npm i",
-    "install": "cd ./server && npm i && cd ../client && npm i"
+    "install": "npm i && cd ./server && npm i && cd ./client && npm i"
   },
   "author": "",
   "license": "ISC",
