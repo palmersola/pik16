@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User, League } = require("../../models");
 
-router.post("/", (req, res) => {
+router.post("/register", (req, res) => {
     if (!req.body.userName) {
         res.status(400).send({message: "Content can not be empty!"});
         return;

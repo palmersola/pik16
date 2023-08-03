@@ -8,7 +8,7 @@ ApiKeyAuth.apiKeyPrefix = "Bearer"; // Set the apiKeyPrefix here
 
 const gamesApi = new GamesApi();
 const teamsApi = new TeamsApi();
-const year = 2022;
+const year = 2023;
 let games;
 let teams;
 

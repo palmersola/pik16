@@ -1,0 +1,20 @@
+{
+  "name": "pik16",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:server": "cd ./server && npm start",
+    "dev:client": "cd ./client && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run dev:server\"  \"npm run dev:client\"",
+    "install:client": "cd ./client && npm i",
+    "install:server": "cd ./server && npm i",
+    "install": "cd ./server && npm i && cd ../client && npm i"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
