@@ -26,7 +26,10 @@ async function getGames(year) {
         'division': 'fbs'
     }
     try {
-        games = await gamesApi.getGames(year, opts);
+        games = await gamesApi.getGames(year, {
+            'week': 1,
+            'division': 'fbs'
+        });
         return games;
     } catch (error) {
         console.error('Error fetching games:', error.message);
@@ -80,7 +83,7 @@ function findGame(id) {
 // main();
 
 // API routes
-router.get('/api/games', async (req, res) => {
+router.get('/games', async (req, res) => {
     try {
         await getGames(year);
         await getTeams(year);
@@ -95,7 +98,7 @@ router.get('/api/games', async (req, res) => {
     }
 });
 
-router.get('/api/gamesdata', async (req, res) => {
+router.get('/poop', async (req, res) => {
     try {
         const a = await getGames(year);
         await getTeams(year);
@@ -108,3 +111,5 @@ router.get('/api/gamesdata', async (req, res) => {
         res.status(500).json({ error: 'Error fetching games' });
     }
 });
+
+module.exports = router

@@ -1,8 +1,11 @@
 // GameCard.js
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 
 const GameCard = ({ game }) => {
     return (
+
+
         <div className='row m-3'>
             <div className="card col-sm-12">
                 <div className="d-flex justify-content-between align-items-center">
