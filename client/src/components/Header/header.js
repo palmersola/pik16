@@ -11,6 +11,9 @@ function header () {
             <NavLink to="/auth" >
                 <button>Login</button>
             </NavLink>
+            <NavLink to="/create-league" >
+                <button>Create League</button>
+            </NavLink>
         </header>
     )
 }
