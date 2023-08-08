@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const LeagueForm = () => {
+const LeagueForm = ({user}) => {
     const [leagueName, setLeagueName] = useState('');
 
     const handleSubmit = async (e) => {
@@ -10,6 +10,7 @@ const LeagueForm = () => {
         try {
             const response = await axios.post('http://localhost:8080/api/league', {
                 leagueName: leagueName,
+                user: user
             });
 
             console.log('League created:', response.data);

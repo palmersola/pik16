@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import './header.css';
 
-function Header() {
+function Header({user, setUser}) {
+    //const signOut = () => setUser(null)
+
     return (
         <header className="header">
             <div className="container">

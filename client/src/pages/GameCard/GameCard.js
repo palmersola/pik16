@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const GameCard = () => {
+const GameCard = ({user}) => {
     const [gamesArr, setGamesArr] = useState([]);
     const [selectedGames, setSelectedGames] = useState([]);
 
@@ -38,6 +38,7 @@ const GameCard = () => {
     return (
         <div className="container mt-5">
             <h1>Game Feed</h1>
+            <h2>{user.userName}</h2>
             <div className="row">
                 {gamesArr.map((game, index) => (
                     <div key={index} id={game.game.id} className="card m-3 p-3 col-sm-5 d-flex flex-row justify-content-between align-items-center">
