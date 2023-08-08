@@ -1,21 +1,28 @@
-import "./header.css"
 import { NavLink } from "react-router-dom";
+import './header.css';
 
-function header () {
+function Header() {
     return (
-        <header>
-            <h1>Pik16</h1>
-            <NavLink to="/" >
-                <button>GameCard</button>
-            </NavLink>
-            <NavLink to="/auth" >
-                <button>Login</button>
-            </NavLink>
-            <NavLink to="/create-league" >
-                <button>Create League</button>
-            </NavLink>
+        <header className="header">
+            <div className="container">
+                <h1 className="logo">Pik16</h1>
+                <nav className="nav">
+                    <NavLink to="/" className="nav-link">
+                        GameCard
+                    </NavLink>
+                    <NavLink to="/auth" className="nav-link">
+                        Login
+                    </NavLink>
+                    <NavLink to="/create-league" className="nav-link">
+                        Create League
+                    </NavLink>
+                    <NavLink to="/leagues" className="nav-link">
+                        Leagues
+                    </NavLink>
+                </nav>
+            </div>
         </header>
-    )
+    );
 }
 
-export default header
+export default Header;
