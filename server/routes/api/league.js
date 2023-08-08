@@ -1,22 +1,34 @@
 const router = require("express").Router();
 const { User, League } = require("../../models");
+const {leagueUser} = require('../../models/index')
 
 router.post("/", (req, res) => {
-        if (!req.body.leagueName) {
-            res.status(400).send({message: "Content can not be empty!"});
-            return;
+    if (!req.body.leagueName) {
+        res.status(400).send({message: "Content can not be empty!"});
+        return;
+    }
+
+    League.create(
+        {
+            leagueName: req.body.leagueName
         }
-
-        const league = {
-            leagueName: req.body.leagueName,
-        };
-
-        League.create(league).then(data => {res.send(data)})
-            .catch(err => {
-                res.status(500).send({
-                    message: err.message || "Some error occurred while creating new user."
-                });
+    ).then(createdLeague => {
+        User.findByPk(req.body.user.userId)
+            .then(async existingUser => {
+                if (existingUser) {
+                    createdLeague.userId = existingUser.userId
+                    await createdLeague.save()
+                } else {
+                    console.error("User not found.");
+                }
+            })
+            .catch(error => {
+                console.error(error);
             });
+    })
+        .catch(error => {
+            console.error(error);
+        });
     }
 );
 

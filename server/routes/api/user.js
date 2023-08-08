@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { User, League } = require("../../models");
+const { User, League, Player } = require("../../models");
+const{userPlayer} = require('../../models/index')
 
 router.post("/register", (req, res) => {
     if (!req.body.userName) {
@@ -7,14 +8,18 @@ router.post("/register", (req, res) => {
         return;
     }
 
-    const user = {
-        userName: req.body.userName,
-        password: req.body.password,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-    };
-
-    User.create(user).then(data => {res.send(data)})
+    User.create(
+        {
+            userName: req.body.userName,
+            password: req.body.password,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            player: {}
+        }, {
+            include: [ userPlayer ]
+        }
+    )
+        .then(data => {res.send(data)})
         .catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while creating new user."
@@ -36,21 +41,27 @@ router.get("/", (req, res) => {
         });
     }
 )
-router.get("/:userId", (req, res) => {
-    const userId = req.params.userId;
 
-    User.findByPk(userId)
-        .then(data => {
-            if (data) {res.send(data)}
-            else {
-                res.status(404).send({
-                    message: `Cannot find user with id=${userId}.`
-                });
-            }
-        })
+router.post("/login", (req, res) => {
+    const userName = req.body.userName;
+    const password = req.body.password
+
+    User.findOne({
+        where: {
+            userName: userName
+        }
+    }).then(user => {
+        console.log("before")
+        user.password === password?
+            res.send(user):
+            res.status(404).send({
+            message: `Cannot find user with userName or password`
+            });
+        console.log("after")
+    })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving user with id=" + userId
+                message: "Error retrieving user with userName=" + userName
             });
         });
     }

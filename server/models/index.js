@@ -1,15 +1,33 @@
 const User = require('./User')
 const League = require('./League')
+const Player = require('./Player')
 
-League.belongsTo(User, {
-    sourceKey: "leagueId",
-    targetKey: "userId"
+const leagueUser = League.belongsTo(User, {
+    foreignKey: "leagueId",
+    as: "user"
 })
-User.hasMany(League)
+const userLeague = User.hasMany(League, {
+    foreignKey: "userId",
+    as: "league"
+})
+
+const playerUser = Player.belongsTo(User,{
+    foreignKey: "playerId",
+    as: "user"
+})
+const userPlayer = User.hasOne(Player,{
+    foreignKey: "userId",
+    as: "player"
+})
 
 module.exports = {
     User,
-    League
+    League,
+    Player,
+    leagueUser,
+    userLeague,
+    playerUser,
+    userPlayer
 }
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
-const Leagues = () => {
+const Leagues = ({user}) => {
     const [leagues, setLeagues] = useState([]);
 
     useEffect(() => {
@@ -12,6 +12,7 @@ const Leagues = () => {
     }, []);
 
     console.log(leagues);
+    console.log(user)
 
     return (
         <div>
