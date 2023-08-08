@@ -114,4 +114,26 @@ router.delete("/", (req, res) => {
     }
 )
 
+router.post("/add-games/:leagueId", async (req, res) => {
+    const leagueId = req.params.leagueId;
+    const selectedGameIds = req.body.gameIds;
+
+    try {
+        const league = await League.findByPk(leagueId);
+
+        if (!league) {
+            return res.status(404).json({ message: `League with ID ${leagueId} not found.` });
+        }
+
+        // Assuming you have a gamesArr field in the League model
+        league.gamesArr = selectedGameIds;
+        await league.save();
+
+        return res.status(200).json({ message: `Games added to league ${leagueId} successfully.` });
+    } catch (error) {
+        return res.status(500).json({ message: "Error adding games to league." });
+    }
+});
+
+
 module.exports = router;

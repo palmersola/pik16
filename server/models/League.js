@@ -13,10 +13,11 @@ League.init (
         leagueName: {
             type: DataTypes.STRING
         }
-        // ,
-        // gamesArr: {
-        //     type: DataTypes.ARRAY(DataTypes.INTEGER)
-        // }
+        ,
+        gamesArr: {
+            type: DataTypes.JSON,
+            defaultValue: []
+        }
     }, {
         sequelize,
         timestamps: false,

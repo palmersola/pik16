@@ -3,6 +3,9 @@ import axios from 'axios';
 import GameCard from './pages/GameCard/GameCard';
 import Header from './components/Header/header'
 import AuthForm from "./pages/AuthForm/AuthForm";
+import LeagueForm from "./pages/League/LeagueForm";
+import Leagues from "./pages/League/Leagues";
+import League from "./pages/League/League";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -23,6 +26,9 @@ const App = () => {
             <Routes>
                 <Route path={ "/"} element={<GameCard />}/>
                 <Route path={"/auth"} element={<AuthForm user={user} />}/>
+                <Route path="/create-league" element={<LeagueForm />} />
+                <Route path="/leagues" element={<Leagues />} />
+                <Route path="/league/:leagueId" element={<League />} />
             </Routes>
         </Router>
     );
