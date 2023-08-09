@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
-const LeagueForm = ({user}) => {
+const LeagueForm = ({user, setUser}) => {
+    const navigate = useNavigate()
+
     const [leagueName, setLeagueName] = useState('');
 
     const handleSubmit = async (e) => {
@@ -13,10 +16,11 @@ const LeagueForm = ({user}) => {
                 user: user
             });
 
-            console.log('League created:', response.data);
 
             // Reset the form after successful submission
             setLeagueName('');
+            setUser(user)
+            navigate("/leagues")
         } catch (error) {
             console.error('Error creating league:', error);
         }

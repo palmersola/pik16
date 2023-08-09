@@ -26,7 +26,7 @@ const App = () => {
             <Routes>
                 <Route path={ "/"} element={<GameCard user={user} />}/>
                 <Route path={"/auth"} element={<AuthForm user={user} setUser={setUser}/>}/>
-                <Route path="/create-league" element={<LeagueForm user={user}/>} />
+                <Route path="/create-league" element={<LeagueForm user={user} setUser={setUser}/>} />
                 <Route path="/leagues" element={<Leagues user={user}/>} />
                 <Route path="/league/:leagueId" element={<League />} />
             </Routes>

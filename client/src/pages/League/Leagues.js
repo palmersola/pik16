@@ -11,9 +11,6 @@ const Leagues = ({user}) => {
         });
     }, []);
 
-    console.log(leagues);
-    console.log(user)
-
     return (
         <div>
             <h2>Leagues</h2>

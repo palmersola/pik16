@@ -1,10 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config')
 
-class Player extends Model{}
-
-Player.init(
-    {
+const Player = sequelize.define("player",{
         playerId: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -13,12 +10,6 @@ Player.init(
         userId: {
             type: DataTypes.INTEGER
         }
-    }, {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: "player"
     }
 )
 
