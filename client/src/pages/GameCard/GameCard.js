@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const GameCard = ({user, selectedLeagueId}) => {
+const GameCard = ({user, setUser, selectedLeagueId}) => {
     const [gamesArr, setGamesArr] = useState([]);
     const [selectedGames, setSelectedGames] = useState([]);
     const navigate = useNavigate()
+
 
     useEffect(() => {
         axios.get('http://localhost:8080/api/football/games').then((response) => {
@@ -43,7 +44,6 @@ const GameCard = ({user, selectedLeagueId}) => {
     return (
         <div className="container mt-5">
             <h1>Game Feed</h1>
-            <h2>{user.userName}</h2>
             <div className="row">
                 {gamesArr.map((game, index) => (
                     <div key={index} id={game.game.id} className="card m-3 p-3 col-sm-5 d-flex flex-row justify-content-between align-items-center">
