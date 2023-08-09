@@ -1,27 +1,26 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 
-const Register = ({setUser}) => {
+const Register = ({user, setUser}) => {
     let userData
     const navigate = useNavigate()
 
     const [formInput, setFormInput] = useState({
         userName: "",
         password: "",
-        bio: "",
-        profilePic: ""
+        firstName: "",
+        lastName: ""
     });
 
     const handleSubmit = () => {
         axios.post('http://localhost:8080/api/user/register', formInput)
             .then((res) => {
                 const userData = res.data;
-                console.log(userData);
-                setUser(userData);
-                navigate("/");
-            });
+                setUser(userData)
+            })
+            .then(() => navigate("/"))
     };
 
     const handleInputChange = e => {

@@ -12,6 +12,7 @@ router.post("/", (req, res) => {
     User.findByPk(req.body.user.userId)
         // .then(user => console.log(user))
         .then(user => {
+            console.log(user)
             user.createLeague({leagueName: name})
             res.send(user)
         })

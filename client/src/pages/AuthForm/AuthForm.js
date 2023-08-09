@@ -14,7 +14,7 @@ const AuthForm = ({user, setUser}) => {
 
     return (
          <div>
-            {register? <Register setUser={setUser}/>: <Login setUser={setUser}/>}
+            {register? <Register user={user} setUser={setUser}/>: <Login user={user} setUser={setUser}/>}
             <button onClick={flipBool}>{register?"Login":"Register"}</button>
          </div>
     )
