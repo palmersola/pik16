@@ -1,10 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config')
 
-class League extends Model{}
-
-League.init (
-    {
+const League = sequelize.define("league",{
         leagueId: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -18,13 +15,7 @@ League.init (
             type: DataTypes.JSON,
             defaultValue: []
         }
-    }, {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: "league"
-    },
+    }
 );
 
 

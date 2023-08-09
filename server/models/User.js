@@ -1,10 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config')
 
-class User extends Model{}
+// class User extends Model{}
 
-User.init(
-    {
+const User = sequelize.define("user",{
         userId: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -22,12 +21,6 @@ User.init(
         lastName: {
             type: DataTypes.STRING
         }
-    }, {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: "user"
     }
 )
 
