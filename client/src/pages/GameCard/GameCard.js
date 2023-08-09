@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const GameCard = ({user, selectedLeagueId}) => {
     const [gamesArr, setGamesArr] = useState([]);
     const [selectedGames, setSelectedGames] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get('http://localhost:8080/api/football/games').then((response) => {
@@ -31,6 +33,7 @@ const GameCard = ({user, selectedLeagueId}) => {
                 .catch(error => {
                     // Handle error, maybe show an error message
                 });
+            navigate(`/league/${selectedLeagueId}`);
         } else {
             // Show an error message or alert if no league is selected
         }
