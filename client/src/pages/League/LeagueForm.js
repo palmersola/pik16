@@ -16,10 +16,8 @@ const LeagueForm = ({user, setUser}) => {
                 user: user
             });
 
-
             // Reset the form after successful submission
             setLeagueName('');
-            setUser(user)
             navigate("/leagues")
         } catch (error) {
             console.error('Error creating league:', error);

@@ -15,6 +15,7 @@ const GameCard = ({user, setUser, selectedLeagueId}) => {
     }, []);
 
     const handleGameSelection = (gameId) => {
+        console.log(user)
         if (selectedGames.includes(gameId)) {
             setSelectedGames(selectedGames.filter(id => id !== gameId));
         } else {

@@ -18,8 +18,8 @@ const Login = ({setUser}) => {
                 const userData = res.data;
                 console.log(userData);
                 setUser(userData);
-                if (userData) navigate("/");
-            });
+            })
+            .then(()=> navigate("/"))
     };
 
     const handleInputChange = e => {

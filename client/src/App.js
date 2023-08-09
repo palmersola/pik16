@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Protect from "./components/Protect";
 import GameCard from './pages/GameCard/GameCard';
-import Header from './components/Header/header'
+import Header from './components/Header/Header'
 import AuthForm from "./pages/AuthForm/AuthForm";
 import LeagueForm from "./pages/League/LeagueForm";
 import Leagues from "./pages/League/Leagues";

@@ -2,7 +2,9 @@ import { NavLink } from "react-router-dom";
 import './header.css';
 
 function Header({user, setUser}) {
-    //const signOut = () => setUser(null)
+    const signOut = () => {
+        setUser(null)
+    }
 
     return (
         <header className="header">
@@ -21,7 +23,7 @@ function Header({user, setUser}) {
                     <NavLink to="/leagues" className="nav-link">
                         Leagues
                     </NavLink>
-                    <NavLink to="/auth" className="nav-link" onClick={setUser(null)}>
+                    <NavLink to="/auth" className="nav-link" onClick={signOut}>
                         Logout
                     </NavLink>
                 </nav>
