@@ -21,6 +21,9 @@ function Header({user, setUser}) {
                     <NavLink to="/leagues" className="nav-link">
                         Leagues
                     </NavLink>
+                    <NavLink to="/auth" className="nav-link" onClick={setUser(null)}>
+                        Logout
+                    </NavLink>
                 </nav>
             </div>
         </header>
