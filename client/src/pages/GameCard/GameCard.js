@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const GameCard = ({user}) => {
+const GameCard = ({user, selectedLeagueId}) => {
     const [gamesArr, setGamesArr] = useState([]);
     const [selectedGames, setSelectedGames] = useState([]);
 
@@ -22,16 +22,18 @@ const GameCard = ({user}) => {
     };
 
     const handleAddGamesToLeague = () => {
-        const leagueId = '4'; // Replace with the actual league ID
-
-        axios.post(`http://localhost:8080/api/league/add-games/${leagueId}`, { gameIds: selectedGames })
-            .then(response => {
-                // Handle success, maybe show a success message
-                setSelectedGames([]); // Clear the selected games after adding to the league
-            })
-            .catch(error => {
-                // Handle error, maybe show an error message
-            });
+        if (selectedLeagueId) {
+            axios.post(`http://localhost:8080/api/league/add-games/${selectedLeagueId}`, { gameIds: selectedGames })
+                .then(response => {
+                    // Handle success, maybe show a success message
+                    setSelectedGames([]); // Clear the selected games after adding to the league
+                })
+                .catch(error => {
+                    // Handle error, maybe show an error message
+                });
+        } else {
+            // Show an error message or alert if no league is selected
+        }
     };
 
 

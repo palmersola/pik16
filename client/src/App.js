@@ -11,7 +11,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
   const [gamesArr, setGamesArr] = useState([]);
-  const [user, setUser] = useState()
+  const [user, setUser] = useState();
+  const [selectedLeagueId, setSelectedLeagueId] = useState(null);
 
 
   // useEffect(() => {
@@ -24,10 +25,10 @@ const App = () => {
         <Router>
             <Header user={user} setUser={setUser}/>
             <Routes>
-                <Route path={ "/"} element={<GameCard user={user} />}/>
+                <Route path={ "/"} element={<GameCard user={user} selectedLeagueId={selectedLeagueId} />}/>
                 <Route path={"/auth"} element={<AuthForm user={user} setUser={setUser}/>}/>
                 <Route path="/create-league" element={<LeagueForm user={user} setUser={setUser}/>} />
-                <Route path="/leagues" element={<Leagues user={user}/>} />
+                <Route path="/leagues" element={<Leagues user={user} setLeagueId={setSelectedLeagueId} />} />
                 <Route path="/league/:leagueId" element={<League />} />
             </Routes>
         </Router>
