@@ -3,8 +3,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 
-const Register = ({user, setUser}) => {
-    let userData
+const Register = ({setUser}) => {
     const navigate = useNavigate()
 
     const [formInput, setFormInput] = useState({

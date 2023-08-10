@@ -8,7 +8,7 @@ ApiKeyAuth.apiKeyPrefix = "Bearer"; // Set the apiKeyPrefix here
 
 const gamesApi = new GamesApi();
 const teamsApi = new TeamsApi();
-const year = 2023;
+const year = 2022;
 let games;
 let teams;
 
@@ -23,13 +23,10 @@ let gamesArr = [];
 async function getGames(year) {
     const opts = {
         'week': 1,
-        'division': 'fbs'
+        'conference': "Minnesota"
     }
     try {
-        games = await gamesApi.getGames(year, {
-            'week': 1,
-            'division': 'fbs'
-        });
+        games = await gamesApi.getGames(year, opts);
         return games;
     } catch (error) {
         console.error('Error fetching games:', error.message);

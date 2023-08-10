@@ -29,7 +29,7 @@ router.post("/register", (req, res) => {
 );
 
 router.get("/", (req, res) => {
-    const userName = req.query.userName;
+    const userName = req.user;
     const condition = userName ? {userName: {[Op.like]: `%${userName}%`}} : null;
 
     User.findAll({ where: condition })
@@ -41,6 +41,18 @@ router.get("/", (req, res) => {
         });
     }
 )
+
+router.get('/:id',  (req, res) => {
+    const userId = req.params.id;
+    League.findAll({
+        where: {
+            userId: userId
+        }
+    })
+    .then(data => {
+        res.send(data)
+    })
+})
 
 router.post("/login", (req, res) => {
     const userName = req.body.userName;

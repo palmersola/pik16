@@ -4,11 +4,12 @@ import Protect from "./components/Protect";
 import GameCard from './pages/GameCard/GameCard';
 import Header from './components/Header/Header'
 import AuthForm from "./pages/AuthForm/AuthForm";
-import LeagueForm from "./pages/League/LeagueForm";
+import CreateLeague from "./pages/League/CreateLeague";
 import Leagues from "./pages/League/Leagues";
 import League from "./pages/League/League";
+import LeagueHome from "./pages/League/LeagueHome";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 const App = () => {
     const [gamesArr, setGamesArr] = useState([]);
@@ -20,10 +21,11 @@ const App = () => {
                 <Protect user={user}>
                     <Header user={user} setUser={setUser}/>
                     <Routes>
-                        <Route path={ "/"} element={<GameCard user={user} setUser={setUser} selectedLeagueId={selectedLeagueId} />}/>
                         <Route path={"/auth"} element={<AuthForm user={user} setUser={setUser}/>}/>
-                        <Route path="/create-league" element={<LeagueForm user={user} setUser={setUser}/>} />
-                        <Route path="/leagues" element={<Leagues user={user} setLeagueId={setSelectedLeagueId} />} />
+                        <Route path={'/'} element={<LeagueHome user={user} selectedLeagueId={selectedLeagueId} setLeagueId={setSelectedLeagueId}/>}/>
+                        <Route path={ "/game-card"} element={<GameCard user={user}  selectedLeagueId={selectedLeagueId} />}/>
+                        <Route path={"/create-league"} element={<CreateLeague user={user} setUser={setUser}/>} />
+                        {/*<Route path="/leagues" element={<Leagues user={user} setLeagueId={setSelectedLeagueId} />} />*/}
                         <Route path="/league/:leagueId" element={<League />} />
                     </Routes>
                 </Protect>

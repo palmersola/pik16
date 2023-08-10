@@ -47,11 +47,13 @@ const League = () => {
                         <div className="team-info text-center">
                             <img className="team-logo" src={game.away.logos[0]} alt="Away Team Logo" />
                             <h5 className="team-name">{game.away.school}</h5>
+                            <h5>{game.game.awayPoints}</h5>
                         </div>
                         <div className="vs">vs</div>
                         <div className="team-info text-center">
                             <img className="team-logo" src={game.home.logos[0]} alt="Home Team Logo" />
                             <h5 className="team-name">{game.home.school}</h5>
+                            <h5>{game.game.homePoints}</h5>
                         </div>
                     </div>
                 ))}
