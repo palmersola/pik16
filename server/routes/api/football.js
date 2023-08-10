@@ -44,6 +44,7 @@ async function getTeams(year) {
     }
 }
 
+
 function findGame(id) {
     let a = games.filter((game) => game.id === id);
 
