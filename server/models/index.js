@@ -1,6 +1,7 @@
 const User = require('./User')
 const League = require('./League')
 const Player = require('./Player')
+const PlayerLeague = require('./PlayerLeague')
 
 const leagueUser = League.hasOne(User, {
     foreignKey: "leagueId",
@@ -20,6 +21,15 @@ const userPlayer = User.hasOne(Player,{
     as: "player"
 })
 
+const playerLeague = Player.belongsToMany(League, {
+   through: PlayerLeague
+})
+
+const leaguePlayer = League.belongsToMany(Player, {
+    through: PlayerLeague
+})
+
+
 module.exports = {
     User,
     League,
@@ -27,7 +37,10 @@ module.exports = {
     leagueUser,
     userLeague,
     playerUser,
-    userPlayer
+    userPlayer,
+    playerLeague,
+    leaguePlayer
+
 }
 
 
