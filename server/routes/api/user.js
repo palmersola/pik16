@@ -42,7 +42,7 @@ router.get("/", (req, res) => {
     }
 )
 
-router.get('/:id',  (req, res) => {
+router.get('/owned/:id',  (req, res) => {
     const userId = req.params.id;
     League.findAll({
         where: {
@@ -53,6 +53,23 @@ router.get('/:id',  (req, res) => {
         res.send(data)
     })
 })
+
+router.get('/playing/:id',  (req, res) => {
+    const user = User.findOne({
+            where: {
+                userId: req.params.id
+            },
+            include: [userPlayer]
+        }).then(user => {
+             League.findAll({
+                where: {
+                    playerPlayerId: user.playerId
+                }
+            }).then(league => {res.send(league)})
+        })
+
+})
+
 
 router.post("/login", (req, res) => {
     const userName = req.body.userName;

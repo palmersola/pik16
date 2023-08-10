@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import {useNavigate} from'react-router-dom';
 
-const League = () => {
+const League = ({setLeagueId}) => {
+    const navigate = useNavigate();
     const { leagueId } = useParams();
     const [league, setLeague] = useState({ leagueName: '', gamesArr: [] });
     const [games, setGames] = useState([]);
@@ -19,6 +21,7 @@ const League = () => {
             setGames(response.data);
         });
     }, []);
+
 
     // Assuming leagues is an array of league objects with gamesArr
     // const selectedLeague = leagues.find(league => league.id === leagueId);

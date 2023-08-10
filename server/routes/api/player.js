@@ -15,6 +15,19 @@ router.get("/", (req, res) => {
     }
 )
 
+router.get('/:id',  (req, res) => {
+    const userId = req.params.id;
+    Player.findAll({
+        where: {
+            userId: userId
+        },
+        include: [League]
+    })
+        .then(data => {
+            res.send(data)
+        })
+})
+
 router.post('/', (req, res) => {
 
 })

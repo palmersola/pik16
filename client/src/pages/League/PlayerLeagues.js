@@ -1,34 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import CreateLeague from "./CreateLeague";
-
-const Leagues = ({user, setLeagueId}) => {
+import axios from "axios";
+const PlayerLeagues = ({user}) => {
     const [leagues, setLeagues] = useState([]);
     const navigate = useNavigate()
 
     useEffect(() => {
         if(user){
-            axios.get(`http://localhost:8080/api/user/${user.userId}`)
+            axios.get(`http://localhost:8080/api/user/playing/${user.userId}`)
                 .then(res => {
                     setLeagues(res.data)
                 })
         }
     })
 
-    const handleAddToLeague = (leagueId) => {
-        setLeagueId(leagueId); // Set the selected league ID
-        navigate('/game-card'); // Navigate to the GameCard route
-    };
-
     return (
         <div>
             <h2>Leagues</h2>
             <ul>
-                {leagues.map((league) => (
+                {leagues.map(league => (
                     <li key={league.id}>
                         <NavLink to={`/league/${league.leagueId}`}>{league.leagueName}</NavLink>
-                        <button className="btn btn-primary" onClick={() => handleAddToLeague(league.leagueId)}>Add to League</button>
                     </li>
                 ))}
             </ul>
@@ -36,4 +28,4 @@ const Leagues = ({user, setLeagueId}) => {
     );
 };
 
-export default Leagues;
+export default PlayerLeagues;

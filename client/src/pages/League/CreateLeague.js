@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
-import{updateLeague} from "./Leagues"
+import{updateLeague} from "./UserLeagues"
 
 const CreateLeague = ({user, setUser}) => {
     const navigate = useNavigate()

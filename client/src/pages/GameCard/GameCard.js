@@ -9,6 +9,7 @@ const GameCard = ({user, setUser, selectedLeagueId}) => {
 
 
     useEffect(() => {
+        console.log(selectedLeagueId)
         axios.get('http://localhost:8080/api/football/games').then((response) => {
             setGamesArr(response.data);
         });
