@@ -1,32 +1,33 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import{updateLeague} from "./Leagues"
 
-const LeagueForm = ({user, setUser}) => {
+const CreateLeague = ({user, setUser}) => {
     const navigate = useNavigate()
-
     const [leagueName, setLeagueName] = useState('');
+    let username = !user? "Guest": user.userName;
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
+        axios.post('http://localhost:8080/api/league', {
+                    leagueName: leagueName,
+                    user: user
+        })
+            // .then(() => {
+            //     setLeagueName('')
+            //     setUser(user)
+            // })
+            .then(() => navigate('/'))
+            .catch(error => console.error('Error creating league:', error))
 
-        try {
-            const response = await axios.post('http://localhost:8080/api/league', {
-                leagueName: leagueName,
-                user: user
-            });
-
-            // Reset the form after successful submission
-            setLeagueName('');
-            navigate("/leagues")
-        } catch (error) {
-            console.error('Error creating league:', error);
-        }
     };
+
 
     return (
         <div className="container mt-4">
             <h2>Create a New League</h2>
+            <h3>{username}</h3>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="leagueName" className="form-label">
@@ -49,4 +50,4 @@ const LeagueForm = ({user, setUser}) => {
     );
 };
 
-export default LeagueForm;
+export default CreateLeague;
