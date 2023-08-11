@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import PlayerList from './PlayerList';
 
-const GameCard = ({user, setUser, selectedLeagueId}) => {
+const GameCard = ({user, selectedLeagueId}) => {
     const [gamesArr, setGamesArr] = useState([]);
     const [selectedGames, setSelectedGames] = useState([]);
     const navigate = useNavigate()
-
 
     useEffect(() => {
         console.log(selectedLeagueId)
@@ -41,7 +41,6 @@ const GameCard = ({user, setUser, selectedLeagueId}) => {
             // Show an error message or alert if no league is selected
         }
     };
-
 
     return (
         <div className="container mt-5">
