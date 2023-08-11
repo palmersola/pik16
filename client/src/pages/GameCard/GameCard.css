@@ -1,0 +1,8 @@
+.sticky-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.badge {
+    margin-top: 5px;
+}

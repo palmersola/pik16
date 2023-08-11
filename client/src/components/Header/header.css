@@ -1,0 +1,48 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* ensures it stays on top of other content */
+    /*background-color: #f8f9fa; !* or any preferred color *!*/
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+    }
+
+    .nav-link {
+        margin: 0.5rem 0;
+    }
+}
+
+/*//Add custom styles for the navigation bar*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Add some space below the navbar */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Adjust the size of the brand text */
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem; /* Adjust the size of the navigation links */
+    margin-right: 10px; /* Add spacing between navigation links */
+}
+
+/* Change the color of active navigation link */
+.navbar-nav .nav-item .active .nav-link {
+    color: #0745ff; /* Change to your desired color */
+}
+
+/* Override the default background color of the navbar */
+.navbar-dark {
+    background-color: #343a40; /* Change to your desired background color*/
+}
