@@ -16,12 +16,10 @@ const UserLeagues = ({user, setLeagueId}) => {
         }
     })
 
-
     const handleAddToLeague = (leagueId) => {
         setLeagueId(leagueId); // Set the selected league ID
         navigate('/game-card'); // Navigate to the GameCard route
     };
-
 
     return (
         <div>
@@ -30,7 +28,7 @@ const UserLeagues = ({user, setLeagueId}) => {
                 {leagues.map(league => (
                     <li key={league.id}>
                         <NavLink to={`/league/${league.leagueId}`}>{league.leagueName}</NavLink>
-                        <button className="btn btn-primary" onClick={() => handleAddToLeague(league.leagueId)}>Add to League</button>
+                        <button className="btn btn-primary" onClick={() => handleAddToLeague(league.leagueId)}>Edit League</button>
                     </li>
                 ))}
             </ul>
