@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './GameCard.css';
 import PlayerList from './PlayerList';
 
 const GameCard = ({user, selectedLeagueId}) => {
     const [gamesArr, setGamesArr] = useState([]);
     const [selectedGames, setSelectedGames] = useState([]);
     const navigate = useNavigate()
+
 
     useEffect(() => {
         console.log(selectedLeagueId)
@@ -42,6 +44,7 @@ const GameCard = ({user, selectedLeagueId}) => {
         }
     };
 
+
     return (
         <div className="container mt-5">
             <h1>Game Feed</h1>
@@ -68,14 +71,19 @@ const GameCard = ({user, selectedLeagueId}) => {
                     </div>
                 ))}
             </div>
-            <button
-                className="btn btn-primary mt-3"
-                onClick={handleAddGamesToLeague}
-                disabled={selectedGames.length !== 16}
-            >
-                Add Selected Games to League
-            </button>
-
+            {/*Sticky Button*/}
+            <div className="sticky-button-container position-fixed top-0 end-0 mt-5 m-3">
+                <button
+                    className="btn btn-primary mt-3"
+                    onClick={handleAddGamesToLeague}
+                    disabled={selectedGames.length !== 16}
+                >
+                    Add Selected Games to League:
+                </button>
+                <div className="badge bg-secondary text-white">
+                    {selectedGames.length} / 16
+                </div>
+            </div>
 
         </div>
     );

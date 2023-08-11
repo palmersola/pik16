@@ -8,28 +8,44 @@ function Header({user, setUser}) {
     }
 
     return (
-        <header className="header">
+        <header className="header navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
-                <h1 className="logo">PIK16</h1>
-                <nav className="nav">
-                    <NavLink to="/" className="nav-link">
-                        Home
-                    </NavLink>
-                    {/*{user?*/}
-                    <NavLink to="/auth" className="nav-link">
-                        Login
-                    </NavLink>
-                        {/*:*/}
-                    <NavLink to="/auth" className="nav-link" onClick={signOut}>
-                    Logout
-                    </NavLink>
-                    {/*}*/}
-                    {/*<NavLink to="/create-league" className="nav-link">*/}
-                    {/*    Create League*/}
-                    {/*</NavLink>*/}
-                    {/*<NavLink to="/leagues" className="nav-link">*/}
-                    {/*    Leagues*/}
-                    {/*</NavLink>*/}
+                <h1 className="logo" href="#">PIK16</h1>
+                <nav className="nav navbar-brand">
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item active">
+                                <NavLink to="/" className="nav-link">
+                                    Home
+                                </NavLink>
+                                {/*{user?*/}
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/auth" className="nav-link">
+                                    Login
+                                </NavLink>
+                                    {/*:*/}
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/auth" className="nav-link" onClick={signOut}>
+                                Logout
+                                </NavLink>
+                                {/*}*/}
+                            </li>
+                            <li className="nav-item">
+                                {/*<NavLink to="/create-league" className="nav-link">*/}
+                                {/*    Create League*/}
+                                {/*</NavLink>*/}
+                                {/*<NavLink to="/leagues" className="nav-link">*/}
+                                {/*    Leagues*/}
+                                {/*</NavLink>*/}
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             </div>
         </header>
