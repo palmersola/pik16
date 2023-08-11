@@ -8,7 +8,6 @@ const GameCard = ({user, selectedLeagueId}) => {
     const [selectedGames, setSelectedGames] = useState([]);
     const navigate = useNavigate()
 
-
     useEffect(() => {
         console.log(selectedLeagueId)
         axios.get('http://localhost:8080/api/football/games').then((response) => {

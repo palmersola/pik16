@@ -11,6 +11,11 @@ const PlayerList = () => {
         console.log(players)
     }, []);
 
+    const handleClick = (e) => {
+        e.preventDefault();
+
+    }
+
     return (
         <div>
             {players.map(player => (
