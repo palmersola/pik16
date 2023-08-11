@@ -18,7 +18,7 @@ const UserLeagues = ({user, setLeagueId}) => {
 
     const handleAddToLeague = (leagueId) => {
         setLeagueId(leagueId); // Set the selected league ID
-        navigate('/game-card'); // Navigate to the GameCard route
+        navigate('/edit'); // Navigate to the GameCard route
     };
 
     return (

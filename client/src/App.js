@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import AuthForm from "./pages/AuthForm/AuthForm";
 import CreateLeague from "./pages/League/CreateLeague";
 import UserLeagues from "./pages/League/UserLeagues";
+import Edit from "./pages/GameCard/Edit";
 import League from "./pages/League/League";
 import LeagueHome from "./pages/League/LeagueHome";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -23,7 +24,8 @@ const App = () => {
                     <Routes>
                         <Route path={"/auth"} element={<AuthForm user={user} setUser={setUser}/>}/>
                         <Route path={'/'} element={<LeagueHome user={user} selectedLeagueId={selectedLeagueId} setLeagueId={setSelectedLeagueId}/>}/>
-                        <Route path={ "/game-card"} element={<GameCard user={user}  selectedLeagueId={selectedLeagueId} />}/>
+                        <Route path={"/edit"} element={<Edit user={user}  selectedLeagueId={selectedLeagueId} />}/>
+                        {/*<Route path={ "/game-card"} element={<GameCard user={user}  selectedLeagueId={selectedLeagueId} />}/>*/}
                         <Route path={"/create-league"} element={<CreateLeague user={user} setUser={setUser}/>} />
                         {/*<Route path="/leagues" element={<Leagues user={user} setLeagueId={setSelectedLeagueId} />} />*/}
                         <Route path="/league/:leagueId" element={<League setLeagueId={setSelectedLeagueId}/>} />
