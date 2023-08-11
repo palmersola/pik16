@@ -31,23 +31,26 @@ const Login = ({setUser}) => {
 
 
     return (
-        <div id="register">
-            <h3>Username</h3>
-            <input name="userName"
+        <form>
+        <div id="register" className="mb-3">
+            <label htmlFor="username" className="form-label">Username</label>
+            <input name="userName" className="form-control"
                    value={formInput.userName}
                    onChange={handleInputChange}
                    type="userName"
                    placeholder="Enter your username"
             />
-            <h3>Password</h3>
+            <label htmlFor="password" className="form-label">Password</label>
             <input  name="password"
+                    className="form-control"
                     value={formInput.password}
                     onChange={handleInputChange}
                     type="password"
                     placeholder="Enter your password"
             />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} type="submit" className="btn btn-primary">Login</button>
         </div>
+        </form>
     )
 }
 

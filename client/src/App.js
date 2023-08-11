@@ -9,6 +9,7 @@ import UserLeagues from "./pages/League/UserLeagues";
 import League from "./pages/League/League";
 import LeagueHome from "./pages/League/LeagueHome";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Landing from "./pages/Landing/Landing";
 
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
                 <Protect user={user}>
                     <Header user={user} setUser={setUser}/>
                     <Routes>
-                        <Route path={"/auth"} element={<AuthForm user={user} setUser={setUser}/>}/>
+                        <Route path={"/auth"} element={<Landing user={user} setUser={setUser}/>}/>
                         <Route path={'/'} element={<LeagueHome user={user} selectedLeagueId={selectedLeagueId} setLeagueId={setSelectedLeagueId}/>}/>
                         <Route path={ "/game-card"} element={<GameCard user={user}  selectedLeagueId={selectedLeagueId} />}/>
                         <Route path={"/create-league"} element={<CreateLeague user={user} setUser={setUser}/>} />
