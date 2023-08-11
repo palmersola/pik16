@@ -22,8 +22,7 @@ let gamesArr = [];
 
 async function getGames(year) {
     const opts = {
-        'week': 1,
-        'conference': "Minnesota"
+        'week': 1
     }
     try {
         games = await gamesApi.getGames(year, opts);

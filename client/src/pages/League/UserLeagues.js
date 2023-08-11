@@ -3,13 +3,13 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CreateLeague from "./CreateLeague";
 
-const Leagues = ({user, setLeagueId}) => {
+const UserLeagues = ({user, setLeagueId}) => {
     const [leagues, setLeagues] = useState([]);
     const navigate = useNavigate()
 
     useEffect(() => {
         if(user){
-            axios.get(`http://localhost:8080/api/user/${user.userId}`)
+            axios.get(`http://localhost:8080/api/user/owned/${user.userId}`)
                 .then(res => {
                     setLeagues(res.data)
                 })
@@ -25,10 +25,10 @@ const Leagues = ({user, setLeagueId}) => {
         <div>
             <h2>Leagues</h2>
             <ul>
-                {leagues.map((league) => (
+                {leagues.map(league => (
                     <li key={league.id}>
                         <NavLink to={`/league/${league.leagueId}`}>{league.leagueName}</NavLink>
-                        <button className="btn btn-primary" onClick={() => handleAddToLeague(league.leagueId)}>Add to League</button>
+                        <button className="btn btn-primary" onClick={() => handleAddToLeague(league.leagueId)}>Edit League</button>
                     </li>
                 ))}
             </ul>
@@ -36,4 +36,4 @@ const Leagues = ({user, setLeagueId}) => {
     );
 };
 
-export default Leagues;
+export default UserLeagues;
