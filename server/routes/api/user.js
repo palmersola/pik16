@@ -32,7 +32,10 @@ router.get("/", (req, res) => {
     const userName = req.user;
     const condition = userName ? {userName: {[Op.like]: `%${userName}%`}} : null;
 
-    User.findAll({ where: condition })
+    User.findAll({
+        where: condition,
+        include: [ userPlayer ]
+    })
         .then(data => {res.send(data)})
         .catch(err => {
             res.status(500).send({

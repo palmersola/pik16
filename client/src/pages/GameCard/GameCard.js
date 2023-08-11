@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './GameCard.css';
+import PlayerList from './PlayerList';
 
-const GameCard = ({user, setUser, selectedLeagueId}) => {
+const GameCard = ({user, selectedLeagueId}) => {
     const [gamesArr, setGamesArr] = useState([]);
     const [selectedGames, setSelectedGames] = useState([]);
     const navigate = useNavigate()
