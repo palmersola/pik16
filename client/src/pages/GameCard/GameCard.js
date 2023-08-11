@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './GameCard.css';
 
 const GameCard = ({user, setUser, selectedLeagueId}) => {
     const [gamesArr, setGamesArr] = useState([]);
@@ -69,14 +70,19 @@ const GameCard = ({user, setUser, selectedLeagueId}) => {
                     </div>
                 ))}
             </div>
-            <button
-                className="btn btn-primary mt-3"
-                onClick={handleAddGamesToLeague}
-                disabled={selectedGames.length !== 16}
-            >
-                Add Selected Games to League
-            </button>
-
+            {/*Sticky Button*/}
+            <div className="sticky-button-container position-fixed top-0 end-0 mt-5 m-3">
+                <button
+                    className="btn btn-primary mt-3"
+                    onClick={handleAddGamesToLeague}
+                    disabled={selectedGames.length !== 16}
+                >
+                    Add Selected Games to League:
+                </button>
+                <div className="badge bg-secondary text-white">
+                    {selectedGames.length} / 16
+                </div>
+            </div>
 
         </div>
     );
