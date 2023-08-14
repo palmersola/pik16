@@ -7,13 +7,13 @@ const UserLeagues = ({user, setLeagueId}) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(user){
+        if(user) {
             axios.get(`http://localhost:8080/api/user/owned/${user.userId}`)
                 .then(res => {
                     setLeagues(res.data)
                 })
         }
-    })
+    }, [])
 
     const handleAddToLeague = (leagueId) => {
         setLeagueId(leagueId); // Set the selected league ID
@@ -21,7 +21,7 @@ const UserLeagues = ({user, setLeagueId}) => {
     };
 
     return (
-        <div>
+        <div className="container mt-0 min-vh-100 bg-body">
             <h2>Manager</h2>
             <ul>
                 {leagues.map(league => (

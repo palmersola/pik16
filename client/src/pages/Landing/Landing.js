@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 const Landing = ({user, setUser}) => {
-    const [register, setRegister] = useState(true)
+    const [register, setRegister] = useState(false)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -30,21 +30,21 @@ const Landing = ({user, setUser}) => {
                     <p className="col-md-8 fs-4">Join hundreds in the Pik16 community. the pik16 pick em’
                         is the best way to enjoy the season. Join a league, pick
                         your games, and spend time doing what you enjoy,
-                        watching football.</p>
+                        watching football. Click below to continue</p>
                     <>
                         <Button variant="primary" onClick={handleShow}>
-                            Launch demo modal
+                            Get to Pikin'
                         </Button>
 
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
-                                <Modal.Title>Modal heading</Modal.Title>
+                                <Modal.Title>Get to Pikin'</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 {register? <Register setUser={setUser} setShow={setShow}/>: <Login setUser={setUser} setShow={setShow}/>}
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button type="button" variant="secondary" onClick={flipBool}>{register?"Existing User?":"New user?"}</Button>
+                                <Button type="button" className="w-100 " variant="secondary" onClick={flipBool}>{register?"Veteran?":"Rookie?"}</Button>
                                 {/*<Button variant="secondary" onClick={handleClose}>*/}
                                 {/*    Close*/}
                                 {/*</Button>*/}

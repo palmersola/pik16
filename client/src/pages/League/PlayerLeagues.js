@@ -12,14 +12,14 @@ const PlayerLeagues = ({user, setLeagueId}) => {
                     setLeagues(res.data)
                 })
         }
-    })
+    },[])
 
     const handleAddToLeague = (e, leagueId) => {
         setLeagueId(leagueId); // Set the selected league ID
     };
 
     return (
-        <div>
+        <div className="container mt-0 min-vh-100 bg-body">
             <h2>Player</h2>
             <ul>
                 {leagues.map(league => (
