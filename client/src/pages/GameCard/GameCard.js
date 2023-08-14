@@ -51,7 +51,7 @@ const GameCard = ({user, selectedLeagueId}) => {
             <h1>Game Feed</h1>
             <div className="row">
                 {gamesArr.map((game, index) => (
-                    <div key={index} id={game.game.id} className="card m-3 p-3 col-sm-5 d-flex flex-row justify-content-between align-items-center game-card"
+                    <div key={index} id={game.game.id} className="card m-3 p-2 col-sm-5 d-flex flex-row justify-content-between align-items-center game-card"
                          style={{
                                  background: `linear-gradient(135deg, ${game.away.color || 'white'} 50%, ${game.home.color || 'black'} 50%)`,
                                  border: `1px solid '#ccc'}`,}}>
