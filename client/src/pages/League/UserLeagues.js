@@ -13,7 +13,7 @@ const UserLeagues = ({user, setLeagueId}) => {
                     setLeagues(res.data)
                 })
         }
-    }, [])
+    }, [user])
 
     const handleAddToLeague = (leagueId) => {
         setLeagueId(leagueId); // Set the selected league ID
