@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import CreateLeague from "./CreateLeague";
 
 const UserLeagues = ({user, setLeagueId}) => {
     const [leagues, setLeagues] = useState([]);
@@ -23,7 +22,7 @@ const UserLeagues = ({user, setLeagueId}) => {
 
     return (
         <div>
-            <h2>Leagues</h2>
+            <h2>Manager</h2>
             <ul>
                 {leagues.map(league => (
                     <li key={league.id}>

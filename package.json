@@ -15,7 +15,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "animate.css": "^4.1.1",
     "concurrently": "^8.2.0"
   }
 }

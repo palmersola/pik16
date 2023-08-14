@@ -19,7 +19,8 @@ router.post("/register", (req, res) => {
             include: [ userPlayer ]
         }
     )
-        .then(data => {res.send(data)})
+        .then(data => {
+            res.send(data)})
         .catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while creating new user."
@@ -46,31 +47,27 @@ router.get("/", (req, res) => {
 )
 
 router.get('/owned/:id',  (req, res) => {
-    const userId = req.params.id;
-    League.findAll({
-        where: {
-            userId: userId
-        }
-    })
-    .then(data => {
-        res.send(data)
-    })
+    User.findOne({where: {userId: req.params.id}})
+        .then(user => {
+            console.log("this one" + user)
+            return user.getLeagues()
+        })
+        .then(data => {
+            console.log(data)
+            res.send(data)
+        })
 })
 
 router.get('/playing/:id',  (req, res) => {
-    const user = User.findOne({
-            where: {
-                userId: req.params.id
-            },
-            include: [userPlayer]
-        }).then(user => {
-             League.findAll({
-                where: {
-                    playerPlayerId: user.playerId
-                }
-            }).then(league => {res.send(league)})
+    Player.findOne({where: {userId: req.params.id}})
+        .then(player => {
+            console.log("this one" + player)
+            return player.getLeagues()
         })
-
+        .then(data => {
+            console.log(data)
+            res.send(data)
+        })
 })
 
 

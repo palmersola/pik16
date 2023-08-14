@@ -1,9 +1,10 @@
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
 
 
-const Login = ({setUser}) => {
+const Login = ({setUser, setShow}) => {
     let userData
     const navigate = useNavigate()
 
@@ -12,13 +13,15 @@ const Login = ({setUser}) => {
         password: "",
     });
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         axios.post('http://localhost:8080/api/user/login', formInput)
             .then((res) => {
                 const userData = res.data;
                 console.log(userData);
                 setUser(userData);
             })
+            .then(()=> setShow(false))
             .then(()=> navigate("/"))
     };
 
@@ -48,7 +51,7 @@ const Login = ({setUser}) => {
                     type="password"
                     placeholder="Enter your password"
             />
-            <button onClick={handleSubmit} type="submit" className="btn btn-primary">Login</button>
+            <Button onClick={handleSubmit} type="submit" className="btn btn-primary">Login</Button>
         </div>
         </form>
     )

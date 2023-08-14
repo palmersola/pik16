@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 
-const Register = ({setUser}) => {
+const Register = ({setUser, setShow}) => {
     const navigate = useNavigate()
 
     const [formInput, setFormInput] = useState({
@@ -12,13 +13,17 @@ const Register = ({setUser}) => {
         firstName: "",
         lastName: ""
     });
+    const handleClose = () => setShow(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         axios.post('http://localhost:8080/api/user/register', formInput)
             .then((res) => {
                 const userData = res.data;
+                console.log(userData);
                 setUser(userData)
             })
+            .then(() =>setShow(false))
             .then(() => navigate("/"))
     };
 
@@ -65,7 +70,7 @@ return (
                type="lastName"
                placeholder="Enter your Last Name"
         />
-        <button onClick={handleSubmit} type="submit" className="btn btn-primary">Register</button>
+        <Button onClick={handleSubmit} type="submit" className="btn btn-primary">Register</Button>
     </div>
         </form>
 )
