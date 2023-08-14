@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { User, League } = require("../../models");
-const {leagueUser} = require('../../models/index')
+const { User, League, Player, PlayerLeague} = require("../../models");
+const {leagueUser, playerLeague} = require('../../models/index')
 
 router.post("/", (req, res) => {
     const name = req.body.leagueName
@@ -72,6 +72,22 @@ router.put("/:leagueId", (req, res) => {
             });
     }
 )
+
+router.post("/addPlayer", (req, res) => {
+    console.log(req.body.leagueId);
+    let league, player;
+    League.findOne({ where: {leagueId: req.body.leagueId}})
+    .then(data => {
+        league = data
+        return Player.findOne({ where: {playerId: req.body.playerId}})
+    }).then(data => {
+        player = data
+       return league.addPlayers(player)
+    })
+        .then(data => {
+        res.send(data)
+    })
+});
 
 router.delete("/:leagueId", (req, res) => {
         const leagueId = req.params.leagueId;

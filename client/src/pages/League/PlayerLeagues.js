@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from "axios";
-const PlayerLeagues = ({user}) => {
+const PlayerLeagues = ({user, setLeagueId}) => {
     const [leagues, setLeagues] = useState([]);
     const navigate = useNavigate()
 
@@ -14,13 +14,17 @@ const PlayerLeagues = ({user}) => {
         }
     })
 
+    const handleAddToLeague = (e, leagueId) => {
+        setLeagueId(leagueId); // Set the selected league ID
+    };
+
     return (
         <div>
-            <h2>Leagues</h2>
+            <h2>Player</h2>
             <ul>
                 {leagues.map(league => (
                     <li key={league.id}>
-                        <NavLink to={`/league/${league.leagueId}`}>{league.leagueName}</NavLink>
+                        <NavLink  to={`/league/${league.leagueId}`} onClick={() => handleAddToLeague(league.leagueId)}>{league.leagueName}</NavLink>
                     </li>
                 ))}
             </ul>

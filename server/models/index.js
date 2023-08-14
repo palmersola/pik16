@@ -4,12 +4,10 @@ const Player = require('./Player')
 const PlayerLeague = require('./PlayerLeague')
 
 const leagueUser = League.hasOne(User, {
-    foreignKey: "leagueId",
-    as: "user"
+    foreignKey: "leagueId"
 })
 const userLeague = User.hasMany(League, {
-    foreignKey: "userId",
-    as: "league"
+    foreignKey: "userId"
 })
 
 const playerUser = Player.belongsTo(User,{
@@ -21,10 +19,17 @@ const userPlayer = User.hasOne(Player,{
     as: "player"
 })
 
-const playerLeague = Player.belongsToMany(League, {
-   through: PlayerLeague
-})
+// const playerLeague = Player.belongsTo(League, {
+//    through: PlayerLeague
+// })
+//
+// const leaguePlayer = League.belongsTo(Player, {
+//     through: PlayerLeague
+//})
 
+const playerLeague = Player.belongsToMany(League, {
+    through: PlayerLeague,
+})
 const leaguePlayer = League.belongsToMany(Player, {
     through: PlayerLeague
 })
