@@ -14,7 +14,7 @@ let teams;
 
 const opts = {
     'week': 1,
-    'division': 'fbs'
+    'conference': 'sec'
 }
 
 let gamesIdArr = [401403853, 401426537];
@@ -24,6 +24,7 @@ async function getGames(year) {
     const opts = {
         'week': 1
     }
+
     try {
         games = await gamesApi.getGames(year, opts);
         return games;
@@ -66,29 +67,23 @@ function findGame(id) {
     gamesArr.push(gameObj);
 }
 
-// async function main() {
-//   try {
-//     await getGames(year);
-//     await getTeams(year);
-
-//     gamesIdArr.forEach(id => findGame(id))
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// main();
-
 // API routes
 router.get('/games', async (req, res) => {
     try {
+        const validConferences = ["Big Ten", "Pac-12", "SEC", "ACC", "Big 12"];
         await getGames(year);
         await getTeams(year);
 
         gamesArr = [];
         // console.log(games)
         games.forEach(game => findGame(game.id));
-        res.json(gamesArr);
+        const filteredGames = gamesArr.filter(gameObj => {
+            const homeConference = gameObj.game.homeConference;
+            const awayConference = gameObj.game.awayConference;
+
+            return validConferences.includes(homeConference) || validConferences.includes(awayConference);
+        });
+        res.json(filteredGames);
     } catch (error) {
         console.error('Error fetching games:', error.message);
         res.status(500).json({ error: 'Error fetching games' });
