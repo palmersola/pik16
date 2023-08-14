@@ -35,6 +35,7 @@ const GameCard = ({user, selectedLeagueId}) => {
                     // Handle success, maybe show a success message
                     setSelectedGames([]); // Clear the selected games after adding to the league
                 })
+                .then(saved => console.log(saved))
                 .catch(error => {
                     // Handle error, maybe show an error message
                 });
@@ -50,12 +51,15 @@ const GameCard = ({user, selectedLeagueId}) => {
             <h1>Game Feed</h1>
             <div className="row">
                 {gamesArr.map((game, index) => (
-                    <div key={index} id={game.game.id} className="card m-3 p-3 col-sm-5 d-flex flex-row justify-content-between align-items-center">
+                    <div key={index} id={game.game.id} className="card m-3 p-3 col-sm-5 d-flex flex-row justify-content-between align-items-center game-card"
+                         style={{
+                                 background: `linear-gradient(135deg, ${game.away.color || 'white'} 50%, ${game.home.color || 'black'} 50%)`,
+                                 border: `1px solid '#ccc'}`,}}>
                         <div className="team-info text-center">
                             <img className="team-logo" src={game.away.logos[0]} alt="Away Team Logo" />
                             <h5 className="team-name">{game.away.school}</h5>
                         </div>
-                        <div className="vs">vs</div>
+                        <div className="vs"><h4>VS</h4></div>
                         <div className="team-info text-center">
                             <img className="team-logo" src={game.home.logos[0]} alt="Home Team Logo" />
                             <h5 className="team-name">{game.home.school}</h5>
