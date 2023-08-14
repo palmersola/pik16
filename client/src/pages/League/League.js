@@ -63,6 +63,10 @@ const League = ({setLeagueId}) => {
                                     <div className="rectangle" style={{
                                         background: `linear-gradient(135deg, ${game.away.color || 'white'} 50%, ${game.home.color || 'black'} 50%)`,
                                         border: `1px solid '#ccc'}`,}}>
+                                        <input
+                                            type="checkbox"
+                                            className="d-flex"
+                                        />
                                         <div className="team-side">
                                             <div className="team-info-A">
                                                 <div className="logo">
@@ -85,6 +89,10 @@ const League = ({setLeagueId}) => {
                                                 <h2>{game.game.homePoints}</h2>
                                             </div>
                                         </div>
+                                        <input
+                                            type="checkbox"
+                                            className="d-flex"
+                                        />
                                     </div>
                                 </div>
                             </div>
