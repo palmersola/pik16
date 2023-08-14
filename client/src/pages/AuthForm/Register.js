@@ -70,7 +70,7 @@ return (
                type="lastName"
                placeholder="Enter your Last Name"
         />
-        <Button onClick={handleSubmit} type="submit" className="btn btn-primary">Register</Button>
+        <Button onClick={handleSubmit} type="submit" className="btn mt-4 w-100 btn-primary">Register</Button>
     </div>
         </form>
 )

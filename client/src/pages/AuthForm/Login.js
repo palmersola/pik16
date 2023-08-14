@@ -51,7 +51,7 @@ const Login = ({setUser, setShow}) => {
                     type="password"
                     placeholder="Enter your password"
             />
-            <Button onClick={handleSubmit} type="submit" className="btn btn-primary">Login</Button>
+            <Button onClick={handleSubmit} type="submit" className="btn mt-4 w-100 btn-primary">Login</Button>
         </div>
         </form>
     )

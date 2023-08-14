@@ -7,6 +7,7 @@ import League from "./pages/League/League";
 import LeagueHome from "./pages/League/LeagueHome";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Landing from "./pages/Landing/Landing";
+import './App.css';
 
 
 const App = () => {

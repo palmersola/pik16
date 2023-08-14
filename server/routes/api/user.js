@@ -49,7 +49,6 @@ router.get("/", (req, res) => {
 router.get('/owned/:id',  (req, res) => {
     User.findOne({where: {userId: req.params.id}})
         .then(user => {
-            console.log("this one" + user)
             return user.getLeagues()
         })
         .then(data => {
@@ -61,7 +60,6 @@ router.get('/owned/:id',  (req, res) => {
 router.get('/playing/:id',  (req, res) => {
     Player.findOne({where: {userId: req.params.id}})
         .then(player => {
-            console.log("this one" + player)
             return player.getLeagues()
         })
         .then(data => {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import{updateLeague} from "./UserLeagues"
 
-const CreateLeague = ({user, setUser}) => {
+const CreateLeague = ({user}) => {
     const navigate = useNavigate()
     const [leagueName, setLeagueName] = useState('');
     let username = !user? "Guest": user.userName;
@@ -25,9 +25,8 @@ const CreateLeague = ({user, setUser}) => {
 
 
     return (
-        <div className="container mt-4">
+        <div className="container mt-0 w-100 min-vh-100 bg-body">
             <h2>Create a New League</h2>
-            <h3>{username}</h3>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="leagueName" className="form-label">
