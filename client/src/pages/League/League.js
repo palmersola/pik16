@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {useNavigate} from'react-router-dom';
-import "../GameCard/GameCard.css";
+import "../League/League.css";
 
 const League = ({setLeagueId}) => {
     const navigate = useNavigate();
@@ -44,25 +44,37 @@ const League = ({setLeagueId}) => {
             <div className="row">
                 {leagueGames.map((game) => (
                     <div
-                        key={game.game.id}
-                        id={game.game.id}
-                        className="card m-3 p-3 col-sm-5 d-flex flex-row justify-content-between align-items-center"
-                        style={{
+                    key={game.game.id}
+                    id={game.game.id}>
+                    <div className="scoreboard-container">
+                        <div className="rectangle" style={{
                             background: `linear-gradient(135deg, ${game.away.color || 'white'} 50%, ${game.home.color || 'black'} 50%)`,
-                            border: `1px solid '#ccc'}`,}}
-                    >
-                        <div className="team-info text-center">
-                            <img className="team-logo" src={game.away.logos[0]} alt="Away Team Logo" />
-                            <h5 className="team-name">{game.away.school}</h5>
-                            <h5 style={{background: `rgba(255,255,255, .5)`, borderRadius: `5px`}}>{game.game.awayPoints}</h5>
-                        </div>
-                        <div className="vs"><h4>VS</h4></div>
-                        <div className="team-info text-center">
-                            <img className="team-logo" src={game.home.logos[0]} alt="Home Team Logo" />
-                            <h5 className="team-name">{game.home.school}</h5>
-                            <h5 style={{background: `rgba(255,255,255, .5)`, borderRadius: `5px`, backgroundSize:`25px`}}>{game.game.homePoints}</h5>
+                            border: `1px solid '#ccc'}`,}}>
+                            <div className="team-side">
+                                <div className="team-info-A">
+                                    <div className="logo">
+                                        <img src={game.away.logos[0]} alt="Away Team Logo" />
+                                    </div>
+                                </div>
+                                <div className="team-score-A">
+                                    <h3 style={{background:`rgba(255,255,255, .5)`, color: `black`, borderRadius:`5px`}}>{game.away.school}</h3>
+                                    <h2 style={{background:`rgba(255,255,255, .5)`, color: `black`, borderRadius:`5px`}}>{game.game.awayPoints}</h2>
+                                </div>
+                            </div>
+                            <div className="team-side">
+                                <div className="team-info-B">
+                                    <div className="logo">
+                                        <img src={game.home.logos[0]} alt="Home Team Logo" />
+                                    </div>
+                                </div>
+                                <div className="team-score-B">
+                                    <h3 style={{background:`rgba(255,255,255, .5)`, color: `black`, borderRadius:`5px`}}>{game.home.school}</h3>
+                                    <h2 style={{background:`rgba(255,255,255, .5)`, color: `black`, borderRadius:`5px`}}>{game.game.homePoints}</h2>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                        </div>
                 ))}
             </div>
         </div>

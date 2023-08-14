@@ -1,0 +1,98 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Sen', sans-serif;
+}
+
+.scoreboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.rectangle {
+    width: 750px;
+    height: 108px;
+    position: relative;
+    background: linear-gradient(45deg, white 50%, black 51%);
+    display: flex;
+    padding: 8px;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.team-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    flex: 1;
+    position: relative;
+}
+
+.team-info-A {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 225px;
+    margin-bottom: 20px;
+}
+
+.team-info-B {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 225px;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    max-width: 125px;
+    max-height: 125px;
+    max-inline-size: 125px;
+}
+
+.team-score-A ,
+.team-score-B  {
+    font-size: 24px;
+    color: white;
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    text-align: center;
+}
+
+.team-score-B h2,
+.team-score-A h2 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.team-score-A h3,
+.team-score-B h3 {
+    font-size: 24px;
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.team-score-A{
+    margin-left: 100px;
+}
+
+.team-score-B{
+    margin-right: 100px;
+}
+
+.record p {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+}
