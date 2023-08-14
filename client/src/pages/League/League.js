@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {useNavigate} from'react-router-dom';
+import "../GameCard/GameCard.css";
 
 const League = ({setLeagueId}) => {
     const navigate = useNavigate();
@@ -46,17 +47,20 @@ const League = ({setLeagueId}) => {
                         key={game.game.id}
                         id={game.game.id}
                         className="card m-3 p-3 col-sm-5 d-flex flex-row justify-content-between align-items-center"
+                        style={{
+                            background: `linear-gradient(135deg, ${game.away.color || 'white'} 50%, ${game.home.color || 'black'} 50%)`,
+                            border: `1px solid '#ccc'}`,}}
                     >
                         <div className="team-info text-center">
                             <img className="team-logo" src={game.away.logos[0]} alt="Away Team Logo" />
                             <h5 className="team-name">{game.away.school}</h5>
-                            <h5>{game.game.awayPoints}</h5>
+                            <h5 style={{background: `rgba(255,255,255, .5)`, borderRadius: `5px`}}>{game.game.awayPoints}</h5>
                         </div>
-                        <div className="vs">vs</div>
+                        <div className="vs"><h4>VS</h4></div>
                         <div className="team-info text-center">
                             <img className="team-logo" src={game.home.logos[0]} alt="Home Team Logo" />
                             <h5 className="team-name">{game.home.school}</h5>
-                            <h5>{game.game.homePoints}</h5>
+                            <h5 style={{background: `rgba(255,255,255, .5)`, borderRadius: `5px`, backgroundSize:`25px`}}>{game.game.homePoints}</h5>
                         </div>
                     </div>
                 ))}
