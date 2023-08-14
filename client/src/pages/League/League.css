@@ -97,7 +97,7 @@ body, html {
     color: white;
 }
 
-@media (max-width: 825px) {
+@media (max-width: 765px) {
     .rectangle {
         width: 100%; /* Set the width to 100% for smaller screens */
         height: auto; /* Let the height adjust automatically based on content */
