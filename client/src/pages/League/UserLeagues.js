@@ -21,13 +21,12 @@ const UserLeagues = ({user, setLeagueId}) => {
     };
 
     return (
-        <div className="container mt-0 min-vh-100 bg-body">
-            <h2>Manager</h2>
+        <div className="container mt-0 min-vh-100 bg-body d-flex justify-content-center align-content-center">
             <ul>
                 {leagues.map(league => (
-                    <li key={league.id}>
-                        <NavLink to={`/league/${league.leagueId}`}>{league.leagueName}</NavLink>
-                        <button className="btn btn-primary" onClick={() => handleAddToLeague(league.leagueId)}>Edit League</button>
+                    <li key={league.id} style={{listStyleType:`none`}}>
+                        <NavLink to={`/league/${league.leagueId}`} style={{fontSize:`30px`}}>{league.leagueName}</NavLink>
+                        <button className="btn btn-primary m-2" onClick={() => handleAddToLeague(league.leagueId)}>Edit League</button>
                     </li>
                 ))}
             </ul>
