@@ -8,7 +8,7 @@ function Header({user, setUser}) {
     }
 
     return (
-        <header className="header navbar navbar-expand-lg navbar-light bg-light custom-bg-color">
+        <header className="header navbar navbar-expand-lg navbar-light bg-light custom-bg-color text-white">
             <div className="container">
                 <h1 className="logo" href="#">PIK16</h1>
                 <nav className="nav navbar-brand">
@@ -19,19 +19,19 @@ function Header({user, setUser}) {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
-                                <NavLink to="/" className="nav-link">
+                                <NavLink to="/" className="nav-link text-white">
                                     Home
                                 </NavLink>
                                 {/*{user?*/}
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/auth" className="nav-link">
+                                <NavLink to="/auth" className="nav-link text-white">
                                     Login
                                 </NavLink>
                                 {/*:*/}
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/auth" className="nav-link" onClick={signOut}>
+                                <NavLink to="/auth" className="nav-link text-white" onClick={signOut}>
                                     Logout
                                 </NavLink>
                                 {/*}*/}
