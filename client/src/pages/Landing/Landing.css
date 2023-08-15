@@ -7,6 +7,28 @@ footer {
     height: 60px;
 }
 
-.jumbotron {
-    height: 500px;
+.home-page {
+    position: relative;
+    height: 100vh;
+    background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/L5KFR66VB6RTAMVWF2SNL2ULYM.jpg'); /* Customize your background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    background-color: rgba(0, 128, 0, 0.8); /* Green overlay color with some transparency */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
