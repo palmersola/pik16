@@ -5,7 +5,7 @@ import './footer.css';
 const Footer = () => {
     return (
         <footer>
-            <Container fluid className="bg-dark text-black p-4 footer">
+            <Container fluid className="bg-dark text-white p-4 footer">
                 <Row>
                     <Col md={4}>
                         <h5>About Us</h5>
@@ -24,9 +24,9 @@ const Footer = () => {
                     <Col md={4}>
                         <h5>Follow Us</h5>
                         <p>
-                            <a href="#" className="text-black">Facebook</a><br />
-                            <a href="#" className="text-black">Twitter</a><br />
-                            <a href="#" className="text-black">Instagram</a>
+                            <a href="#" className="text-white">Facebook</a><br />
+                            <a href="#" className="text-white">Twitter</a><br />
+                            <a href="#" className="text-white">Instagram</a>
                         </p>
                     </Col>
                 </Row>
