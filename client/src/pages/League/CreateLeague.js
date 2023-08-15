@@ -3,8 +3,7 @@ import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import{updateLeague} from "./UserLeagues"
 
-const CreateLeague = ({user}) => {
-    const navigate = useNavigate()
+const CreateLeague = ({user, setKey}) => {
     const [leagueName, setLeagueName] = useState('');
     let username = !user? "Guest": user.userName;
 
@@ -18,7 +17,7 @@ const CreateLeague = ({user}) => {
             //     setLeagueName('')
             //     setUser(user)
             // })
-            .then(() => navigate('/'))
+            .then(() => setKey('manager'))
             .catch(error => console.error('Error creating league:', error))
 
     };

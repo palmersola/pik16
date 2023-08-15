@@ -30,7 +30,7 @@ const LeagueHome = ({ user,  setLeagueId }) => {
                     <PlayerLeagues user={user} setLeagueId={setLeagueId} />
                 </Tab>
                 <Tab  eventKey="create" title="Create" >
-                    <CreateLeague user={user}/>
+                    <CreateLeague setKey={setKey} user={user}/>
                 </Tab>
             </Tabs>
         </div>

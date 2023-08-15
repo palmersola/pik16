@@ -5,6 +5,7 @@ import {useNavigate} from'react-router-dom';
 import "../League/League.css";
 import "../GameCard/GameCard.css";
 import {Tab, Tabs} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 const League = ({setLeagueId}) => {
     const navigate = useNavigate();
@@ -13,6 +14,22 @@ const League = ({setLeagueId}) => {
     const [games, setGames] = useState([]);
     const [leagueGames, setLeagueGames] = useState([]);
     const [key, setKey] = useState('games');
+    const [checked, setChecked] = useState({
+        0: null, 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null,
+        8: null, 9: null, 10: null, 11: null, 12: null, 13: null, 14: null, 15: null,
+    }); // State to track checked input ID
+
+    const handleCheckboxClick = async (e, check, index, flip) => {
+        await setChecked({
+            ...checked,
+            [index]: check
+        })
+        const otherTeam = document.getElementById(flip);
+        e.target.checked = true;
+        otherTeam.checked = false;
+    }
+
+    const test = () => console.log(checked);
 
     useEffect(() => {
         axios.get(`http://localhost:8080/api/league/${leagueId}`).then((response) => {
@@ -25,10 +42,6 @@ const League = ({setLeagueId}) => {
             setGames(response.data);
         });
     }, []);
-
-
-    // Assuming leagues is an array of league objects with gamesArr
-    // const selectedLeague = leagues.find(league => league.id === leagueId);
 
     useEffect(() => {
         // Filter games based on game IDs in the league's gamesArr
@@ -52,22 +65,24 @@ const League = ({setLeagueId}) => {
                 className="container mt-4 mb-0 h3"
                 justify
             >
-
                 <Tab eventKey="games" title="Games">
                     <div className="container mt-0 min-vh-100 bg-body d-flex flex-column align-items-center">
-                        {leagueGames.map((game) => (
+                        {leagueGames.map((game, index) => (
                             <div
                                 key={game.game.id}
                                 id={game.game.id}>
                                 <div className="scoreboard-container">
                                     <div className="rectangle" style={{
-                                        background: `linear-gradient(135deg, ${game.away.color || 'white'} 50%, ${game.home.color || 'black'} 50%)`,
+                                        background: `linear-gradient(${index % 2 === 0 ? '135deg' : '45deg'}, ${game.away.color || 'white'} 50%, ${game.home.color || 'black'} 50%)`,
                                         border: `1px solid '#ccc'}`,}}>
                                         <input
+                                            id={game.away.id}
                                             type="checkbox"
-                                            className="d-flex"
+                                            className="d-flex "
+                                            // checked={awayChecked}
+                                            onChange={e => handleCheckboxClick(e, 0, index, game.home.id)}
                                         />
-                                        <div className="team-side">
+                                        <label for={game.away.id} className="team-side">
                                             <div className="team-info-A">
                                                 <div className="logo">
                                                     <img src={game.away.logos[0]} alt="Away Team Logo" />
@@ -77,8 +92,8 @@ const League = ({setLeagueId}) => {
                                                 <h3>{game.away.school}</h3>
                                                 <h2>{game.game.awayPoints}</h2>
                                             </div>
-                                        </div>
-                                        <div className="team-side">
+                                        </label>
+                                        <label for={game.home.id} className="team-side">
                                             <div className="team-info-B">
                                                 <div className="logo">
                                                     <img src={game.home.logos[0]} alt="Home Team Logo" />
@@ -88,18 +103,24 @@ const League = ({setLeagueId}) => {
                                                 <h3>{game.home.school}</h3>
                                                 <h2>{game.game.homePoints}</h2>
                                             </div>
-                                        </div>
+                                        </label>
                                         <input
+                                            id={game.home.id}
                                             type="checkbox"
                                             className="d-flex"
+                                            // checked={homeChecked}
+                                            onChange={e => handleCheckboxClick(e, 1, index, game.away.id)}
                                         />
                                     </div>
                                 </div>
                             </div>
                         ))}
+                        <Button onClick={test} className="mb-3">Save</Button>
                     </div>
                 </Tab>
                 <Tab eventKey="players" title="Players">
+                    <div className="container mt-0 min-vh-100 bg-body d-flex flex-column align-items-center">
+                    </div>
                 </Tab>
             </Tabs>
         </div>
