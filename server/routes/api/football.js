@@ -12,13 +12,12 @@ const year = 2022;
 let games;
 let teams;
 
+let gamesArr = [];
+
 const opts = {
     'week': 1,
     'conference': 'sec'
 }
-
-let gamesIdArr = [401403853, 401426537];
-let gamesArr = [];
 
 async function getGames(year) {
     const opts = {
