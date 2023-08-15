@@ -8,7 +8,7 @@ function Header({user, setUser}) {
     }
 
     return (
-        <header className="header navbar navbar-expand-lg navbar-light bg-light">
+        <header className="header navbar navbar-expand-lg navbar-light bg-light custom-bg-color">
             <div className="container">
                 <h1 className="logo" href="#">PIK16</h1>
                 <nav className="nav navbar-brand">
@@ -28,11 +28,11 @@ function Header({user, setUser}) {
                                 <NavLink to="/auth" className="nav-link">
                                     Login
                                 </NavLink>
-                                    {/*:*/}
+                                {/*:*/}
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/auth" className="nav-link" onClick={signOut}>
-                                Logout
+                                    Logout
                                 </NavLink>
                                 {/*}*/}
                             </li>

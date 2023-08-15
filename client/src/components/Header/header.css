@@ -3,6 +3,7 @@
     top: 0;
     z-index: 1000; /* ensures it stays on top of other content */
     /*background-color: #f8f9fa; !* or any preferred color *!*/
+    background-color: #0745ff
 }
 
 .nav {
@@ -26,6 +27,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap; /* Add some space below the navbar */
+    background-color: #343a40
 }
 
 .navbar-brand {
@@ -45,4 +47,8 @@
 /* Override the default background color of the navbar */
 .navbar-dark {
     background-color: #343a40; /* Change to your desired background color*/
+}
+
+.header.navbar.bg-light {
+    background-color: #1869ba !important;
 }

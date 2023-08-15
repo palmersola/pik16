@@ -1,0 +1,9 @@
+.bg-dark {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #1869ba !important;
+    text-align: center;
+    padding: 10px 0;
+    flex-shrink: 0;
+}
